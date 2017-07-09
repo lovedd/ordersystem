@@ -1,5 +1,5 @@
 <template>
-    <router-view></router-view>
+    <div>密码管理</div>
 </template>
 <script>
     export default{};

@@ -1,5 +1,5 @@
 <template>
-    <router-view></router-view>
+    <div>欢迎页</div>
 </template>
 <script>
     export default{};

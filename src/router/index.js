@@ -22,7 +22,15 @@ export default new Router({
         {
             path: '/welcome',
             name: '欢迎页',
-            component: Welcome
+            component: Home,
+            redirect: '/welcome/welcome',
+            children: [
+                {
+                    path: 'welcome',
+                    name: '欢迎页',
+                    component: Welcome
+                }
+            ]
         },
         // {
         //     path: '/home',

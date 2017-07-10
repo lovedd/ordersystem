@@ -1,6 +1,26 @@
 <template>
-    <div>销售组</div>
+    <div>
+        <div v-for="item in list">{{item.name}}</div>
+    </div>
 </template>
 <script>
-    export default{};
+    import {queryTeamList} from 'api/salesTeam';
+
+    export default{
+        data () {
+            return {
+                list: []
+            };
+        },
+        created () {
+            this.getList();
+        },
+        methods: {
+            getList (params) {
+                queryTeamList().then(response => {
+                    this.list = response.data.list;
+                });
+            }
+        }
+    };
 </script>

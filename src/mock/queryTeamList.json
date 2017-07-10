@@ -1,0 +1,16 @@
+{
+  "responseCode": "000000",
+  "responseMsg": "成功",
+  "data": {
+    "list":[
+        {
+            "id": "001",
+            "name": "item1"
+        },
+        {
+            "id": "002",
+            "name": "item2"
+        }
+    ]
+  }
+}

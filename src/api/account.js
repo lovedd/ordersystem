@@ -4,8 +4,9 @@
 import fetch from 'utils/fetch';
 export function login (options) {
     return fetch({
-        url: '/login.json',
-        // method: 'post',
-        params: options
+        url: '/login',
+        method: 'post',
+        // params: options
+        options
     });
 }

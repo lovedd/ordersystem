@@ -1,0 +1,26 @@
+{
+  "login": {
+      "responseCode": "000000",
+      "responseMsg": "成功",
+      "data": {
+          "token": "123526345",
+          "msg": "登陆成功"
+      }
+  },
+  "queryTeamList": {
+    "responseCode": "000000",
+    "responseMsg": "成功",
+    "data": {
+      "list": [
+        {
+          "id": "001",
+          "name": "item1"
+        },
+        {
+          "id": "002",
+          "name": "item2"
+        }
+      ]
+    }
+  }
+}

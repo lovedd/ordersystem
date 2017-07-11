@@ -5,7 +5,7 @@ import fetch from 'utils/fetch';
 
 export function queryTeamList (query) {
     return fetch({
-        url: '/queryTeamList.json',
+        url: '/queryTeamList',
         params: query
     });
 }

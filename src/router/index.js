@@ -9,10 +9,12 @@ import SalesTeam from '@/views/sales_manage/basic_settings/SalesTeam';
 import CustomerCredit from '@/views/sales_manage/basic_settings/CustomerCredit';
 import GoodsBill from '@/views/sales_manage/business_manage/GoodsBill';
 import SalesContract from '@/views/sales_manage/business_manage/SalesContract';
+import { isLogin } from 'utils/account';
 
+// 待改造，懒加载
 Vue.use(Router);
 
-export default new Router({
+const router = new Router({
     routes: [
         {
             path: '/login',
@@ -67,7 +69,8 @@ export default new Router({
                 {
                     path: 'sales_team',
                     name: '销售组',
-                    component: SalesTeam
+                    component: SalesTeam,
+                    meta: {requiresAuth: true}
                 },
                 {
                     path: 'customer_credit',
@@ -88,3 +91,21 @@ export default new Router({
         }
     ]
 });
+
+// 路由钩子，路由开始前操作
+router.beforeEach((to, from, next) => {
+    // 登录权限路由验证
+    if (to.matched.some(record => record.meta.requiresAuth)) {
+        if (isLogin()) {
+            next();
+        } else {
+            next({
+                path: '/login',
+                query: {redirect: to.fullPath}
+            });
+        }
+    } else {
+        next();
+    }
+});
+export default router;

@@ -1,0 +1,8 @@
+{
+  "responseCode": "000000",
+  "responseMsg": "成功",
+  "data": {
+      "token": "123526345",
+      "msg": "登陆成功"
+  }
+}

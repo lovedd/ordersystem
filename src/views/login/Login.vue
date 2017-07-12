@@ -19,6 +19,9 @@
                     }
                 }).then(response => {
                     this.msg = response.data.msg;
+                }).catch(response => {
+//                    debugger;
+//                    console.log(response);
                 });
             }
         }

@@ -1,6 +1,6 @@
 {
   "login": {
-      "responseCode": "000000",
+      "responseCode": "300006",
       "responseMsg": "成功",
       "data": {
           "token": "123526345",

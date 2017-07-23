@@ -1,6 +1,43 @@
 <template>
-    <router-view></router-view>
+    <div class="home">
+        <c-header></c-header>
+        <div class="content">
+            <el-row>
+                <el-col :span="4">
+                    <c-sidebar></c-sidebar>
+                </el-col>
+                <el-col :span="20">
+                    <c-nav></c-nav>
+                    <transition name="fade" mode="out-in">
+                        <router-view class="main-view"></router-view>
+                    </transition>
+                </el-col>
+            </el-row>
+        </div>
+    </div>
 </template>
+
 <script>
-    export default{};
+    import CHeader from 'components/Header';
+    import CSidebar from 'components/Sidebar';
+    import CNav from 'components/NavBar';
+
+    export default {
+        name: 'home',
+        components: {
+            CHeader,
+            CSidebar,
+            CNav
+        }
+    };
 </script>
+
+<style scoped>
+    .content {
+        z-index: 1;
+        overflow-x: hidden;
+    }
+    .main-view {
+        padding: 5px;
+    }
+</style>

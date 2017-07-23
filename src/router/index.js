@@ -56,7 +56,7 @@ const router = new Router({
             children: [
                 {
                     path: 'pwd_manage',
-                    name: 'pwdManage',
+                    name: '密码管理',
                     component: PwdManage
                 }
             ]
@@ -95,6 +95,7 @@ const router = new Router({
 // 路由钩子，路由开始前操作
 router.beforeEach((to, from, next) => {
     // 登录权限路由验证
+    // debugger;
     if (to.matched.some(record => record.meta.requiresAuth)) {
         if (isLogin()) {
             next();

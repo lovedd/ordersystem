@@ -57,7 +57,8 @@ const router = new Router({
                 {
                     path: 'pwd_manage',
                     name: '密码管理',
-                    component: PwdManage
+                    component: PwdManage,
+                    meta: {requiresAuth: true}
                 }
             ]
         },
@@ -75,17 +76,20 @@ const router = new Router({
                 {
                     path: 'customer_credit',
                     name: '客户信用',
-                    component: CustomerCredit
+                    component: CustomerCredit,
+                    meta: {requiresAuth: true}
                 },
                 {
                     path: 'goods_bill',
                     name: '提货单',
-                    component: GoodsBill
+                    component: GoodsBill,
+                    meta: {requiresAuth: true}
                 },
                 {
                     path: 'sales_contract',
                     name: '销售合同',
-                    component: SalesContract
+                    component: SalesContract,
+                    meta: {requiresAuth: true}
                 }
             ]
         }

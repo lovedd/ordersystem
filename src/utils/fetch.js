@@ -4,6 +4,7 @@
 import axios from 'axios';
 import store from '../store';
 import router from '../router';
+import { Message } from 'element-ui';
 
 const service = axios.create({
     // `baseURL` 将自动加在 `url` 前面，除非 `url` 是一个绝对 URL。
@@ -27,9 +28,14 @@ service.interceptors.response.use(
         if (res.responseCode !== '000000') {
             // 300000定义与account相关的状态码，300001表示token未定义，300002表示token过非法，300003表示token过期
             if (res.responseCode === '300001' || res.responseCode === '300002' || res.responseCode === '300003') {
-                alert('未登录');
+                // alert('未登录');
                 // debugger;
-                // this.$message.error('未登录');
+                // Message.error('未登录');
+                Message({
+                    message: res.errMsg || '未登录',
+                    type: 'error',
+                    duration: 5 * 1000
+                });
                 store.commit('LOG_OUT', {});
                 // 不能用path，否则login只会替代hash最后的一个值,导致404
                 router.replace({

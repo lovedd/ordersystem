@@ -93,7 +93,7 @@
                         <el-input v-model="changeOptions.salesName" style="width: 50%;"></el-input>
                     </el-form-item>
                     <el-form-item label="详情">
-                        <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="changeOptions.detail">
+                        <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="changeOptions.detail" style="width: 60%">
                         </el-input>
                     </el-form-item>
                 </el-form>
@@ -119,7 +119,7 @@
                         <el-input v-model="addOptions.salesName" style="width: 50%;"></el-input>
                     </el-form-item>
                     <el-form-item label="详情">
-                        <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="addOptions.detail">
+                        <el-input type="textarea" :autosize="{ minRows: 2, maxRows: 4}" placeholder="请输入内容" v-model="addOptions.detail" style="width: 60%">
                         </el-input>
                     </el-form-item>
                 </el-form>

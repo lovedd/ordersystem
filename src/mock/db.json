@@ -22,5 +22,51 @@
         }
       ]
     }
-  }
+  },
+    "goodsBill": {
+        "responseCode": "000000",
+        "responseMsg": "成功",
+        "data": {
+            "billList": [{
+                "billNumber": "01345643",
+                "billDate": "2016-05-03",
+                "billOrg": "业务团队一",
+                "salesName": "王小虎",
+                "detail": "detail111111"
+            }, {
+                "billNumber": "23343643",
+                "billDate": "2016-07-01",
+                "billOrg": "业务团队二",
+                "salesName": "李小风",
+                "detail": "detail2222222"
+            }, {
+                "billNumber": "12256439",
+                "billDate": "2016-08-12",
+                "billOrg": "业务团队一",
+                "salesName": "许小丁",
+                "detail": "detail333333"
+            }, {
+                "billNumber": "31345643",
+                "billDate": "2017-06-09",
+                "billOrg": "业务团队三",
+                "salesName": "王小虎",
+                "detail": "detail4444444"
+            }, {
+                "billNumber": "11345643",
+                "billDate": "2016-05-16",
+                "billOrg": "业务团队一",
+                "salesName": "王小虎",
+                "detail": "detail555555555"
+            }, {
+                "billNumber": "01345678",
+                "billDate": "2016-06-18",
+                "billOrg": "业务团队三",
+                "salesName": "刘大胖",
+                "detail": "detail66666666666"
+            }],
+            "orgOptions": [
+                "业务团队一","业务团队二","业务团队三"
+            ]
+        }
+    }
 }

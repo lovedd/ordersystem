@@ -41,6 +41,11 @@
             <!--<el-button @click="toggleSelection()">取消选择</el-button>-->
             <!--</div>-->
         </div>
+        <div class="pagination-container">
+            <el-pagination v-show="!tableLoading" @size-change="handleSizeChange" @current-change="handleCurrentChange" :current-page.sync="curPage"
+                           :page-sizes="pageSizes" :page-size="pageSize" layout="total, sizes, prev, pager, next, jumper" :total="billList.length">
+            </el-pagination>
+        </div>
         <div>
             <el-dialog
                 title="输入查询条件"
@@ -147,6 +152,10 @@
                     salesName: '',
                     detail: ''
                 },
+                pageSize: 1,
+                curPage: 1,
+                pageSizes: [1, 2, 3],
+                tableLoading: true,
                 multipleSelection: [],
                 queryDialogVisible: false,
                 changeDialogVisible: false,
@@ -166,10 +175,13 @@
             }
         },
         created () {
+            // 请求回头记得加loading
             // get不传参默认查询全部
-            goodsBillService.queryBillList().then(response => {
+            // 回头将查询和获取和列表刷新封装一下，传参就行
+            goodsBillService.queryBillList({pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
                 if (response.responseCode === '000000') {
                     this.data = response.data;
+                    this.tableLoading = false;
 //                    this.billList = data.billList;
                 } else {
                     console.log(response.errMsg || '错误');
@@ -198,6 +210,33 @@
 //                    })
 //                    .catch(_ => {});
             },
+            handleSizeChange (val) {
+                console.log(`每页 ${val} 条`);
+                this.pageSize = val;
+                goodsBillService.queryBillList({pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
+                    if (response.responseCode === '000000') {
+                        this.data = response.data;
+                        this.tableLoading = false;
+//                    this.billList = data.billList;
+                    } else {
+                        console.log(response.errMsg || '错误');
+                    }
+                }).catch(response => {
+                });
+            },
+            handleCurrentChange (val) {
+                console.log(`当前页: ${val}`);
+                goodsBillService.queryBillList({pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
+                    if (response.responseCode === '000000') {
+                        this.data = response.data;
+                        this.tableLoading = false;
+//                    this.billList = data.billList;
+                    } else {
+                        console.log(response.errMsg || '错误');
+                    }
+                }).catch(response => {
+                });
+            },
             // 输入条件查询
             queryBillList () {
 //                this.billList = this.billList.filter(item => !this.multipleSelection.includes(item.billNumber));
@@ -205,9 +244,10 @@
                 console.log(this.queryOptions);
                 // post传参数delArr说明是删除
                 this.queryDialogVisible = false;
-                goodsBillService.queryBillList({queryOptions: this.queryOptions}).then(response => {
+                goodsBillService.queryBillList({queryOptions: this.queryOptions, pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
                     if (response.responseCode === '000000') {
                         this.data = response.data;
+                        this.tableLoading = false;
 //                        this.billList = data.billList;
                     } else {
                         console.log(response.errMsg || '错误');
@@ -222,9 +262,10 @@
                 // post传参数delArr说明是删除
 //                this.changeOptions.billNumber = this.multipleSelection[0].billNumber;
                 console.log(this.changeOptions);
-                goodsBillService.fetchBillList({changeOptions: this.changeOptions}).then(response => {
+                goodsBillService.fetchBillList({changeOptions: this.changeOptions, pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
                     if (response.responseCode === '000000') {
                         this.data = response.data;
+                        this.tableLoading = false;
 //                        this.billList = data.billList;
                     } else {
                         console.log(response.errMsg || '错误');
@@ -238,9 +279,10 @@
                 this.addDialogVisible = false;
                 // post传参数delArr说明是删除
                 console.log(this.addOptions);
-                goodsBillService.fetchBillList({addOptions: this.addOptions}).then(response => {
+                goodsBillService.fetchBillList({addOptions: this.addOptions, pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
                     if (response.responseCode === '000000') {
                         this.data = response.data;
+                        this.tableLoading = false;
                         this.addOptions = {
                             billOrg: '',
                             salesName: '',
@@ -259,9 +301,10 @@
                 let delArr = this.multipleSelection.map(item => item.billNumber);
                 console.log(delArr);
                 // post传参数delArr说明是删除
-                goodsBillService.fetchBillList({delArr: delArr}).then(response => {
+                goodsBillService.fetchBillList({delArr: delArr, pageNum: this.curPage, pageSize: this.pageSize}).then(response => {
                     if (response.responseCode === '000000') {
                         this.data = response.data;
+                        this.tableLoading = false;
 //                        this.billList = data.billList;
                     } else {
                         console.log(response.errMsg || '错误');

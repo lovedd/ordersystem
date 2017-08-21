@@ -1,3 +1,5 @@
+// 这个配置文件是webpack生产环境的核心配置文件
+
 var path = require('path')
 var utils = require('./utils')
 var webpack = require('webpack')

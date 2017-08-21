@@ -1,4 +1,6 @@
 // see http://vuejs-templates.github.io/webpack for documentation.
+// 配置文件，用来定义开发环境和生产环境中所需要的参数
+
 var path = require('path')
 
 module.exports = {
@@ -27,14 +29,18 @@ module.exports = {
     autoOpenBrowser: false,
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
+      // 代理表，用来建立一个虚拟api服务器代理本机的请求，只能用于开发模式
+      // vue-cli使用这个功能是借助http-proxy-middleware插件，一般解决跨域请求api
+      // 详细配置见https://github.com/chimurai/http-proxy-middleware
+      // 该项目使用了axios，所以没在这里配置
     proxyTable: {
-        '/api/': {
-            target: 'http://localhost:3000',
-            changeOrigin:true,
-            pathRewrite: {
-                '^/api': ''
-            }
-        }
+        // '/api/': {
+        //     target: 'http://localhost:3000',
+        //     changeOrigin:true,
+        //     pathRewrite: {
+        //         '^/api': ''
+        //     }
+        // }
     },
     // CSS Sourcemaps off by default because relative paths are "buggy"
     // with this option, according to the CSS-Loader README

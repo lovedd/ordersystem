@@ -1,3 +1,5 @@
+// 这个配置文件是命令npm run build 的入口配置文件，主要用于生产环境
+
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'

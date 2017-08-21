@@ -1,3 +1,5 @@
+// 版本检查模块，用来检查node和npm版本
+
 var chalk = require('chalk')
 var semver = require('semver')
 var packageConfig = require('../package.json')
